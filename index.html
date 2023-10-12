@@ -4,12 +4,19 @@
     <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
   </head>
   <style>
- body {
-   background-color:#20262e;
-   color: #39d353;
+.replOutput {
+  background-color:#20262e;
+  color: #39d353;
+  width:100%;
+  height:100%;
+  padding: 1em 2em;
 
 }
 
   </style>
-  <py-repl  id="my-repl" auto-generate=true> </py-repl>
+<py-repl id="my-repl"  output-mode="replace" std-out="output">
+   
+</py-repl>
+<div id="output" class="replOutput"></div>
+
 </html>
