@@ -1,261 +1,321 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Python Code Tester - PyScript REPL</title>
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css" />
-    <script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        .navbar {
-            background-color: #2b2d42;
-            color: white;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .app-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .title {
-            color: #f0ab3c !important;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .pyscript-section {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2b2d42;
-            margin-bottom: 1rem;
-        }
-        .info-text {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        .repl-container {
-            margin-top: 2rem;
-        }
-        .feature-list {
-            background-color: #f8f9fa;
-            border-left: 4px solid #f0ab3c;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 4px;
-        }
-        .feature-list ul {
-            margin: 0.5rem 0 0 0;
-            padding-left: 1.5rem;
-        }
-        .feature-list li {
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        .feature-list strong {
-            color: #2b2d42;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        kbd {
-            background-color: #f8f9fa;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            padding: 2px 4px;
-            font-family: monospace;
-            font-size: 0.9em;
-        }
-        .example-code {
-            background-color: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 4px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-family: monospace;
-        }
-        .loading {
-            color: #666;
-            text-align: center;
-            padding: 2rem;
-            font-style: italic;
-        }
-        py-repl {
-            display: block;
-            width: 100%;
-            min-height: 400px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-        }
-        .manual-repl {
-            display: none;
-            background-color: #f8f9fa;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-        .manual-repl textarea {
-            width: 100%;
-            height: 200px;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            padding: 10px;
-            resize: vertical;
-        }
-        .manual-repl button {
-            background-color: #2b2d42;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 4px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .manual-repl button:hover {
-            background-color: #1d1f36;
-        }
-        .output {
-            background-color: #000;
-            color: #0f0;
-            font-family: 'Courier New', monospace;
-            padding: 10px;
-            border-radius: 4px;
-            margin-top: 10px;
-            min-height: 50px;
-            white-space: pre-wrap;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="app-header">
-            <a class="title" href="#">🐍 Python Code Tester</a>
-        </div>
-    </nav>
-    
-    <div class="container">
-        <section class="pyscript-section">
-            <h1>Python Code Testing Environment</h1>
-            
-            <div class="info-text">
-                Willkommen im Python Code Tester! Hier kannst du Python-Code direkt im Browser ausführen.
-                <br><br>
-                <strong>Hinweis:</strong> PyScript wird geladen... Dies kann einen Moment dauern.
-            </div>
-            
-            <div class="feature-list">
-                <strong>Features:</strong>
-                <ul>
-                    <li>Interaktive Python REPL im Browser</li>
-                    <li>Keine Installation erforderlich</li>
-                    <li>Unterstützt die meisten Python-Standardbibliotheken</li>
-                    <li>Direkte Code-Ausführung</li>
-                </ul>
-            </div>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Python Code Tester - PyScript REPL</title>
+		<link rel="icon" type="image/png" href="favicon.png" />
+		<link
+			rel="stylesheet"
+			href="https://pyscript.net/releases/2024.8.2/core.css" />
+		<script
+			type="module"
+			src="https://pyscript.net/releases/2024.8.2/core.js"></script>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f5f5f5;
+			}
+			.navbar {
+				background-color: #2b2d42;
+				color: white;
+				padding: 1rem;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+			.app-header {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+			}
+			.title {
+				color: #f0ab3c !important;
+				text-decoration: none;
+				font-size: 1.5rem;
+				font-weight: bold;
+			}
+			.container {
+				max-width: 1200px;
+				margin: 2rem auto;
+				padding: 0 1rem;
+			}
+			.pyscript-section {
+				background-color: white;
+				border-radius: 8px;
+				padding: 2rem;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			}
+			h1 {
+				color: #2b2d42;
+				margin-bottom: 1rem;
+			}
+			.info-text {
+				color: #666;
+				margin-bottom: 2rem;
+				font-size: 1.1rem;
+				line-height: 1.6;
+			}
+			.repl-container {
+				margin-top: 2rem;
+			}
+			.feature-list {
+				background-color: #f8f9fa;
+				border-left: 4px solid #f0ab3c;
+				padding: 1.5rem;
+				margin-bottom: 2rem;
+				border-radius: 4px;
+			}
+			.feature-list ul {
+				margin: 0.5rem 0 0 0;
+				padding-left: 1.5rem;
+			}
+			.feature-list li {
+				margin-bottom: 0.5rem;
+				color: #333;
+			}
+			.feature-list strong {
+				color: #2b2d42;
+				display: block;
+				margin-bottom: 0.5rem;
+			}
+			kbd {
+				background-color: #f8f9fa;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+				padding: 2px 4px;
+				font-family: monospace;
+				font-size: 0.9em;
+			}
+			.example-code {
+				background-color: #f8f9fa;
+				border: 1px solid #e9ecef;
+				border-radius: 4px;
+				padding: 1rem;
+				margin: 1rem 0;
+				font-family: monospace;
+			}
+			.loading {
+				color: #666;
+				text-align: center;
+				padding: 2rem;
+				font-style: italic;
+			}
+			#pyscript-status {
+				font-weight: bold;
+				padding: 0.5rem;
+				border-radius: 4px;
+				background-color: #f8f9fa;
+				display: inline-block;
+				margin-top: 0.5rem;
+			}
+			py-repl {
+				display: block;
+				width: 100%;
+				min-height: 400px;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				background-color: #fff;
+			}
+			.manual-repl {
+				display: none;
+				background-color: #f8f9fa;
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				padding: 1rem;
+				margin-top: 1rem;
+			}
+			.manual-repl textarea {
+				width: 100%;
+				height: 200px;
+				font-family: "Courier New", monospace;
+				font-size: 14px;
+				border: 1px solid #ccc;
+				border-radius: 4px;
+				padding: 10px;
+				resize: vertical;
+			}
+			.manual-repl button {
+				background-color: #2b2d42;
+				color: white;
+				border: none;
+				padding: 10px 20px;
+				border-radius: 4px;
+				cursor: pointer;
+				margin-top: 10px;
+			}
+			.manual-repl button:hover {
+				background-color: #1d1f36;
+			}
+			.output {
+				background-color: #000;
+				color: #0f0;
+				font-family: "Courier New", monospace;
+				padding: 10px;
+				border-radius: 4px;
+				margin-top: 10px;
+				min-height: 50px;
+				white-space: pre-wrap;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="app-header">
+				<a class="title" href="#">🐍 Python Code Tester</a>
+			</div>
+		</nav>
 
-            <div class="example-code">
-                <strong>Beispiel zum Ausprobieren:</strong><br>
-                print("Hallo Welt!")<br>
-                import math<br>
-                print(f"Pi ist ungefähr: {math.pi:.2f}")
-            </div>
-            
-            <div class="repl-container">
-                <div class="loading" id="loading">
-                    ⏳ PyScript wird geladen... Bitte warten Sie einen Moment.
-                </div>
-                
-                <py-repl id="pyrepl" style="display: none;">
-# Willkommen bei PyScript!
-# Geben Sie hier Ihren Python-Code ein und drücken Sie Shift+Enter
+		<div class="container">
+			<section class="pyscript-section">
+				<h1>Python Code Testing Environment</h1>
 
-print("Hallo aus PyScript!")
+				<div class="info-text">
+					Willkommen im Python Code Tester! Hier kannst du Python-Code direkt im
+					Browser ausführen.
+					<br /><br />
+					<strong>Status:</strong>
+					<span id="pyscript-status">PyScript wird geladen...</span>
+				</div>
 
-# Beispiel: Einfache Berechnungen
-x = 10
-y = 20
-result = x + y
-print(f"Die Summe von {x} und {y} ist: {result}")
+				<div class="feature-list">
+					<strong>Features:</strong>
+					<ul>
+						<li>Interaktive Python REPL im Browser</li>
+						<li>Keine Installation erforderlich</li>
+						<li>Unterstützt die meisten Python-Standardbibliotheken</li>
+						<li>Direkte Code-Ausführung</li>
+					</ul>
+				</div>
 
-# Aktuelles Datum
-import datetime
-print(f"Heute ist: {datetime.date.today()}")
-                </py-repl>
+				<div class="example-code">
+					<strong>Beispiel zum Ausprobieren:</strong><br />
+					print("Hallo Welt!")<br />
+					import math<br />
+					print(f"Pi ist ungefähr: {math.pi:.2f}")
+				</div>
 
-                <!-- Fallback für den Fall, dass PyScript nicht funktioniert -->
-                <div class="manual-repl" id="manual-repl">
-                    <h3>Alternative Python-Eingabe</h3>
-                    <p>Falls PyScript nicht lädt, können Sie hier Code eingeben:</p>
-                    <textarea id="code-input" placeholder="# Geben Sie hier Ihren Python-Code ein
+				<div class="repl-container">
+					<div class="loading" id="loading">
+						⏳ PyScript wird geladen... Bitte warten Sie einen Moment.
+					</div>
+
+					<py-repl id="pyrepl" style="display: none">
+						# 🐍 Willkommen bei PyScript! # Drücken Sie Shift+Enter um Code
+						auszuführen # Oder klicken Sie auf den "Run" Button print("🎉 Hallo
+						aus PyScript!") print("=" * 40) # Beispiel: Einfache Berechnungen x
+						= 10 y = 20 result = x + y print(f"📊 Die Summe von {x} und {y} ist:
+						{result}") # Aktuelles Datum und Zeit from datetime import datetime
+						now = datetime.now() print(f"🕐 Heute ist: {now.strftime('%d.%m.%Y
+						um %H:%M:%S')}") # Mathematische Funktionen import math print(f"🔢 π
+						(Pi) = {math.pi:.6f}") print(f"🔢 e (Euler) = {math.e:.6f}")
+					</py-repl>
+
+					<!-- Fallback für den Fall, dass PyScript nicht funktioniert -->
+					<div class="manual-repl" id="manual-repl">
+						<h3>Alternative Python-Eingabe</h3>
+						<p>Falls PyScript nicht lädt, können Sie hier Code eingeben:</p>
+						<textarea
+							id="code-input"
+							placeholder="# Geben Sie hier Ihren Python-Code ein
 print('Hallo Welt!')
 import math
 print(f'Pi = {math.pi:.2f}')"></textarea>
-                    <br>
-                    <button onclick="showCodeInfo()">Code anzeigen</button>
-                    <div class="output" id="output">Hier würde die Ausgabe erscheinen...</div>
-                </div>
-            </div>
-        </section>
-    </div>
+						<br />
+						<button onclick="showCodeInfo()">Code anzeigen</button>
+						<div class="output" id="output">
+							Hier würde die Ausgabe erscheinen...
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 
-    <py-config>
-        {
-            "packages": ["matplotlib", "numpy"]
-        }
-    </py-config>
+		<py-config>
+			{ "packages": ["numpy"], "terminal": false, "autoclose_loader": true }
+		</py-config>
 
-    <script>
-        // Prüfen ob PyScript geladen wurde
-        setTimeout(function() {
-            const pyrepl = document.getElementById('pyrepl');
-            const loading = document.getElementById('loading');
-            const manualRepl = document.getElementById('manual-repl');
-            
-            // Versuchen PyScript zu verwenden
-            if (window.pyscript) {
-                loading.style.display = 'none';
-                pyrepl.style.display = 'block';
-                console.log('PyScript erfolgreich geladen');
-            } else {
-                // Fallback anzeigen
-                loading.innerHTML = '❌ PyScript konnte nicht geladen werden. Alternative Ansicht wird angezeigt.';
-                setTimeout(() => {
-                    loading.style.display = 'none';
-                    manualRepl.style.display = 'block';
-                }, 2000);
-            }
-        }, 5000);
+		<script>
+			let pyscriptReady = false;
+			let loadingTimeout;
 
-        function showCodeInfo() {
-            const code = document.getElementById('code-input').value;
-            const output = document.getElementById('output');
-            output.textContent = 'Code eingegeben:\n' + code + '\n\nHinweis: Dies ist nur eine Anzeige. Für echte Python-Ausführung ist PyScript erforderlich.';
-        }
+			// PyScript Event Listeners
+			document.addEventListener("py:ready", function () {
+				console.log("PyScript ist bereit!");
+				pyscriptReady = true;
+				clearTimeout(loadingTimeout);
+				showPyScript();
+			});
 
-        // Event listener für bessere Benutzerführung
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Seite geladen, warte auf PyScript...');
-        });
-    </script>
-</body>
+			document.addEventListener("py:error", function (e) {
+				console.error("PyScript Fehler:", e.detail);
+				showFallback("PyScript Fehler: " + e.detail.message);
+			});
+
+			function showPyScript() {
+				const loading = document.getElementById("loading");
+				const pyrepl = document.getElementById("pyrepl");
+				const status = document.getElementById("pyscript-status");
+
+				loading.style.display = "none";
+				pyrepl.style.display = "block";
+				status.innerHTML = "✅ PyScript erfolgreich geladen!";
+				status.style.color = "#28a745";
+			}
+
+			function showFallback(message = "PyScript konnte nicht geladen werden") {
+				const loading = document.getElementById("loading");
+				const manualRepl = document.getElementById("manual-repl");
+				const status = document.getElementById("pyscript-status");
+
+				loading.style.display = "none";
+				manualRepl.style.display = "block";
+				status.innerHTML = "❌ " + message + " - Fallback-Modus aktiv";
+				status.style.color = "#dc3545";
+			}
+
+			// Timeout für den Fall, dass PyScript nicht lädt
+			document.addEventListener("DOMContentLoaded", function () {
+				console.log("Seite geladen, warte auf PyScript...");
+
+				// Längeres Timeout für PyScript (15 Sekunden)
+				loadingTimeout = setTimeout(() => {
+					if (!pyscriptReady) {
+						console.warn("PyScript Timeout erreicht");
+						showFallback("PyScript Timeout - Lädt zu langsam");
+					}
+				}, 15000);
+
+				// Zusätzliche Überprüfung nach 3 Sekunden
+				setTimeout(() => {
+					if (!pyscriptReady && !document.querySelector("py-repl[exec-id]")) {
+						const status = document.getElementById("pyscript-status");
+						status.innerHTML =
+							"⏳ PyScript lädt noch... (kann bis zu 30 Sekunden dauern)";
+						status.style.color = "#ffc107";
+					}
+				}, 3000);
+			});
+
+			function showCodeInfo() {
+				const code = document.getElementById("code-input").value;
+				const output = document.getElementById("output");
+
+				if (!code.trim()) {
+					output.textContent = "Bitte geben Sie Python-Code ein.";
+					return;
+				}
+
+				output.innerHTML = `<strong>Eingegebener Code:</strong>\n${code}\n\n<em>Hinweis: Dies ist nur eine Anzeige. Für echte Python-Ausführung ist PyScript erforderlich.</em>`;
+			}
+
+			// Verbesserte Fehlererkennung
+			window.addEventListener("error", function (e) {
+				if (e.message.includes("pyscript") || e.filename.includes("pyscript")) {
+					console.error("PyScript Ladefehler:", e);
+					showFallback("PyScript Ladefehler");
+				}
+			});
+		</script>
+	</body>
 </html>
