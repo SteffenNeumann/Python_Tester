@@ -1,38 +1,173 @@
-<html>
-  <head>
-    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
-    <!-- <script defer src="https://pyscript.net/alpha/pyscript.js"></script>-->
-    <script defer src="https://pyscript.net/releases/2024.1.1/core.js"></script>
-  </head>
-  <style>
-  
- body{
- background-color:#E4E4E5;
- color: #432E52;
- 
-} 
-  
-.replOutput {
-  background-color:#20262e;
-  color: #39d353;
-  padding: 1em 2em;
-  margin:0.5em 2em;
+<!doctype html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Python Code Tester - PyScript REPL</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+        .navbar {
+            background-color: #2b2d42;
+            color: white;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .title {
+            color: #f0ab3c !important;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        .pyscript-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2b2d42;
+            margin-bottom: 1rem;
+        }
+        .info-text {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .repl-container {
+            margin-top: 2rem;
+        }
+        .feature-list {
+            background-color: #f8f9fa;
+            border-left: 4px solid #f0ab3c;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+        }
+        .feature-list ul {
+            margin: 0.5rem 0 0 0;
+            padding-left: 1.5rem;
+        }
+        .feature-list li {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        .feature-list strong {
+            color: #2b2d42;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        /* PyScript spezifische Anpassungen */
+        py-repl {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #fff;
+            min-height: 300px;
+        }
+        py-terminal {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 1rem;
+            background-color: #f8f9fa;
+        }
+        kbd {
+            background-color: #f8f9fa;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            padding: 2px 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+        .example-code {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 4px;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="app-header">
+            <a class="title" href="#">🐍 Python Code Tester</a>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section class="pyscript-section">
+            <h1>Python Code Testing Environment</h1>
+            
+            <div class="info-text">
+                Willkommen im Python Code Tester! Hier kannst du Python-Code direkt im Browser ausführen.
+                <br><br>
+                <strong>Tipp:</strong> Drücke <kbd>Shift</kbd> + <kbd>Enter</kbd> um den Code auszuführen.
+            </div>
+            
+            <div class="feature-list">
+                <strong>Features:</strong>
+                <ul>
+                    <li>Interaktive Python REPL im Browser</li>
+                    <li>Keine Installation erforderlich</li>
+                    <li>Unterstützt die meisten Python-Standardbibliotheken</li>
+                    <li>Matplotlib für Diagramme und Visualisierungen</li>
+                    <li>NumPy und Pandas für Datenverarbeitung</li>
+                    <li>Direktes Ausführen und Testen von Code-Snippets</li>
+                </ul>
+            </div>
 
-}
-h2{
-  color: rgb(84, 84, 84);
-  margin: 2em 0 0.5em 2em;
+            <div class="example-code">
+                <strong>Beispiel zum Ausprobieren:</strong><br>
+                print("Hallo Welt!")<br>
+                import math<br>
+                print(f"Pi ist ungefähr: {math.pi:.2f}")
+            </div>
+            
+            <div class="repl-container">
+                <py-repl>
+# Hier kannst du deinen Python-Code eingeben
+print("Willkommen bei PyScript!")
 
-} 
+# Beispiel: Einfache Berechnungen
+x = 10
+y = 20
+print(f"Die Summe von {x} und {y} ist: {x + y}")
 
-  </style>
-  <h2> Single Tester</h2>
-<py-repl id="my-repl"  output-mode="replace" std-out="output">
-   
-</py-repl>
-<div id="output" class="replOutput"></div>
-<h2> Multi Tester</h2>
-<py-repl id="my-repl" auto-generate=true> </py-repl>
+# Du kannst auch Bibliotheken verwenden:
+import datetime
+print(f"Aktuelles Datum: {datetime.date.today()}")
+                </py-repl>
+            </div>
+            
+            <py-terminal auto></py-terminal>
+        </section>
+    </div>
 
-
+    <!-- PyScript Konfiguration -->
+    <py-config>
+        packages = ["matplotlib", "numpy", "pandas"]
+        
+        [[fetch]]
+        files = []
+    </py-config>
+</body>
 </html>
