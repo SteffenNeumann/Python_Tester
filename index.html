@@ -1,227 +1,240 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="de">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Python Code Tester - Interaktive Umgebung</title>
-    <link rel="icon" type="image/png" href="favicon.png" />
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-        .navbar {
-            background-color: #2b2d42;
-            color: white;
-            padding: 1rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .app-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .title {
-            color: #f0ab3c !important;
-            text-decoration: none;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .editor-section {
-            background-color: white;
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        h1 {
-            color: #2b2d42;
-            margin-bottom: 1rem;
-        }
-        .info-text {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-        .feature-list {
-            background-color: #f8f9fa;
-            border-left: 4px solid #f0ab3c;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            border-radius: 4px;
-        }
-        .feature-list ul {
-            margin: 0.5rem 0 0 0;
-            padding-left: 1.5rem;
-        }
-        .feature-list li {
-            margin-bottom: 0.5rem;
-            color: #333;
-        }
-        .feature-list strong {
-            color: #2b2d42;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-        kbd {
-            background-color: #f8f9fa;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            padding: 2px 4px;
-            font-family: monospace;
-            font-size: 0.9em;
-        }
-        .code-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-        @media (max-width: 768px) {
-            .code-container {
-                grid-template-columns: 1fr;
-            }
-        }
-        .editor-panel, .output-panel {
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-        .panel-header {
-            background-color: #2b2d42;
-            color: white;
-            padding: 0.75rem 1rem;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .code-editor {
-            width: 100%;
-            height: 400px;
-            border: none;
-            padding: 1rem;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            background-color: #fafafa;
-            resize: none;
-            outline: none;
-            line-height: 1.4;
-        }
-        .output-area {
-            height: 400px;
-            padding: 1rem;
-            background-color: #1a1a1a;
-            color: #00ff00;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            overflow-y: auto;
-            white-space: pre-wrap;
-            word-wrap: break-word;
-        }
-        .run-button {
-            background-color: #f0ab3c;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-        .run-button:hover {
-            background-color: #d4941f;
-        }
-        .run-button:disabled {
-            background-color: #ccc;
-            cursor: not-allowed;
-        }
-        .examples {
-            margin: 2rem 0;
-        }
-        .example-button {
-            background-color: #6c757d;
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            margin: 0.25rem;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-        .example-button:hover {
-            background-color: #545b62;
-        }
-        .status {
-            padding: 0.5rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-            font-weight: bold;
-        }
-        .status.success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-        .status.error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-    </style>
-</head>
-<body>
-    <nav class="navbar">
-        <div class="app-header">
-            <a class="title" href="#">🐍 Python Code Tester</a>
-        </div>
-    </nav>
-    
-    <div class="container">
-        <section class="editor-section">
-            <h1>Python Code Testing Environment</h1>
-            
-            <div class="info-text">
-                Willkommen im Python Code Tester! Hier können Sie Python-Code schreiben und testen.
-                <br><br>
-                <strong>Hinweis:</strong> Dies ist eine JavaScript-basierte Python-Simulation mit grundlegenden Funktionen.
-            </div>
-            
-            <div class="feature-list">
-                <strong>Unterstützte Features:</strong>
-                <ul>
-                    <li>Print-Statements und Variablen</li>
-                    <li>Grundlegende Mathematik und String-Operationen</li>
-                    <li>Listen, Schleifen und Bedingungen</li>
-                    <li>Einfache Funktionen</li>
-                    <li>Datum und Zeit (datetime-Simulation)</li>
-                </ul>
-            </div>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Python Code Tester - Interaktive Umgebung</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f5f5f5;
+			}
+			.navbar {
+				background-color: #2b2d42;
+				color: white;
+				padding: 1rem;
+				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+			}
+			.app-header {
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+			}
+			.title {
+				color: #f0ab3c !important;
+				text-decoration: none;
+				font-size: 1.5rem;
+				font-weight: bold;
+			}
+			.container {
+				max-width: 1200px;
+				margin: 2rem auto;
+				padding: 0 1rem;
+			}
+			.editor-section {
+				background-color: white;
+				border-radius: 8px;
+				padding: 2rem;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+			}
+			h1 {
+				color: #2b2d42;
+				margin-bottom: 1rem;
+			}
+			.info-text {
+				color: #666;
+				margin-bottom: 2rem;
+				font-size: 1.1rem;
+				line-height: 1.6;
+			}
+			.feature-list {
+				background-color: #f8f9fa;
+				border-left: 4px solid #f0ab3c;
+				padding: 1.5rem;
+				margin-bottom: 2rem;
+				border-radius: 4px;
+			}
+			.feature-list ul {
+				margin: 0.5rem 0 0 0;
+				padding-left: 1.5rem;
+			}
+			.feature-list li {
+				margin-bottom: 0.5rem;
+				color: #333;
+			}
+			.feature-list strong {
+				color: #2b2d42;
+				display: block;
+				margin-bottom: 0.5rem;
+			}
+			kbd {
+				background-color: #f8f9fa;
+				border: 1px solid #ccc;
+				border-radius: 3px;
+				padding: 2px 4px;
+				font-family: monospace;
+				font-size: 0.9em;
+			}
+			.code-container {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1rem;
+				margin-top: 2rem;
+			}
+			@media (max-width: 768px) {
+				.code-container {
+					grid-template-columns: 1fr;
+				}
+			}
+			.editor-panel,
+			.output-panel {
+				border: 1px solid #ddd;
+				border-radius: 4px;
+				overflow: hidden;
+			}
+			.panel-header {
+				background-color: #2b2d42;
+				color: white;
+				padding: 0.75rem 1rem;
+				font-weight: bold;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+			.code-editor {
+				width: 100%;
+				height: 400px;
+				border: none;
+				padding: 1rem;
+				font-family: "Courier New", monospace;
+				font-size: 14px;
+				background-color: #fafafa;
+				resize: none;
+				outline: none;
+				line-height: 1.4;
+			}
+			.output-area {
+				height: 400px;
+				padding: 1rem;
+				background-color: #1a1a1a;
+				color: #00ff00;
+				font-family: "Courier New", monospace;
+				font-size: 14px;
+				overflow-y: auto;
+				white-space: pre-wrap;
+				word-wrap: break-word;
+			}
+			.run-button {
+				background-color: #f0ab3c;
+				color: white;
+				border: none;
+				padding: 0.5rem 1rem;
+				border-radius: 4px;
+				cursor: pointer;
+				font-weight: bold;
+			}
+			.run-button:hover {
+				background-color: #d4941f;
+			}
+			.run-button:disabled {
+				background-color: #ccc;
+				cursor: not-allowed;
+			}
+			.examples {
+				margin: 2rem 0;
+			}
+			.example-button {
+				background-color: #6c757d;
+				color: white;
+				border: none;
+				padding: 0.5rem 1rem;
+				margin: 0.25rem;
+				border-radius: 4px;
+				cursor: pointer;
+			}
+			.example-button:hover {
+				background-color: #545b62;
+			}
+			.status {
+				padding: 0.5rem;
+				margin: 1rem 0;
+				border-radius: 4px;
+				font-weight: bold;
+			}
+			.status.success {
+				background-color: #d4edda;
+				color: #155724;
+				border: 1px solid #c3e6cb;
+			}
+			.status.error {
+				background-color: #f8d7da;
+				color: #721c24;
+				border: 1px solid #f5c6cb;
+			}
+		</style>
+	</head>
+	<body>
+		<nav class="navbar">
+			<div class="app-header">
+				<a class="title" href="#">🐍 Python Code Tester</a>
+			</div>
+		</nav>
 
-            <div class="examples">
-                <strong>Beispiele laden:</strong>
-                <button class="example-button" onclick="loadExample('basic')">Grundlagen</button>
-                <button class="example-button" onclick="loadExample('math')">Mathematik</button>
-                <button class="example-button" onclick="loadExample('loops')">Schleifen</button>
-                <button class="example-button" onclick="loadExample('functions')">Funktionen</button>
-            </div>
+		<div class="container">
+			<section class="editor-section">
+				<h1>Python Code Testing Environment</h1>
 
-            <div id="status" class="status" style="display: none;"></div>
-            
-            <div class="code-container">
-                <div class="editor-panel">
-                    <div class="panel-header">
-                        <span>📝 Python Code Editor</span>
-                        <button class="run-button" onclick="runCode()" id="runBtn">
-                            ▶ Ausführen
-                        </button>
-                    </div>
-                    <textarea class="code-editor" id="codeEditor" placeholder="# Geben Sie hier Ihren Python-Code ein
+				<div class="info-text">
+					Willkommen im Python Code Tester! Hier können Sie Python-Code
+					schreiben und testen.
+					<br /><br />
+					<strong>Hinweis:</strong> Dies ist eine JavaScript-basierte
+					Python-Simulation mit grundlegenden Funktionen.
+				</div>
+
+				<div class="feature-list">
+					<strong>Unterstützte Features:</strong>
+					<ul>
+						<li>Print-Statements und Variablen</li>
+						<li>Grundlegende Mathematik und String-Operationen</li>
+						<li>Listen, Schleifen und Bedingungen</li>
+						<li>Einfache Funktionen</li>
+						<li>Datum und Zeit (datetime-Simulation)</li>
+					</ul>
+				</div>
+
+				<div class="examples">
+					<strong>Beispiele laden:</strong>
+					<button class="example-button" onclick="loadExample('basic')">
+						Grundlagen
+					</button>
+					<button class="example-button" onclick="loadExample('math')">
+						Mathematik
+					</button>
+					<button class="example-button" onclick="loadExample('loops')">
+						Schleifen
+					</button>
+					<button class="example-button" onclick="loadExample('functions')">
+						Funktionen
+					</button>
+				</div>
+
+				<div id="status" class="status" style="display: none"></div>
+
+				<div class="code-container">
+					<div class="editor-panel">
+						<div class="panel-header">
+							<span>📝 Python Code Editor</span>
+							<button class="run-button" onclick="runCode()" id="runBtn">
+								▶ Ausführen
+							</button>
+						</div>
+						<textarea
+							class="code-editor"
+							id="codeEditor"
+							placeholder="# Geben Sie hier Ihren Python-Code ein
 print('Hallo Welt!')
 x = 10
 y = 20
@@ -230,270 +243,297 @@ print(f'Die Summe ist: {x + y}')
 # Aktuelles Datum
 import datetime
 print(f'Heute ist: {datetime.date.today()}')"></textarea>
-                </div>
-                
-                <div class="output-panel">
-                    <div class="panel-header">
-                        <span>📺 Ausgabe</span>
-                        <button class="run-button" onclick="clearOutput()" style="background-color: #6c757d;">
-                            🗑 Löschen
-                        </button>
-                    </div>
-                    <div class="output-area" id="output">Hier erscheint die Ausgabe Ihres Codes...</div>
-                </div>
-            </div>
-        </section>
-    </div>
+					</div>
 
-    <script>
-        // Python-ähnlicher Interpreter in JavaScript
-        class PythonSimulator {
-            constructor() {
-                this.variables = {};
-                this.functions = {};
-                this.output = [];
-            }
+					<div class="output-panel">
+						<div class="panel-header">
+							<span>📺 Ausgabe</span>
+							<button
+								class="run-button"
+								onclick="clearOutput()"
+								style="background-color: #6c757d">
+								🗑 Löschen
+							</button>
+						</div>
+						<div class="output-area" id="output">
+							Hier erscheint die Ausgabe Ihres Codes...
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
 
-            print(...args) {
-                const text = args.map(arg => this.toString(arg)).join(' ');
-                this.output.push(text);
-                return text;
-            }
+		<script>
+			// Python-ähnlicher Interpreter in JavaScript
+			class PythonSimulator {
+				constructor() {
+					this.variables = {};
+					this.functions = {};
+					this.output = [];
+				}
 
-            toString(value) {
-                if (value === null || value === undefined) return 'None';
-                if (typeof value === 'string') return value;
-                if (Array.isArray(value)) return '[' + value.map(v => this.toString(v)).join(', ') + ']';
-                return String(value);
-            }
+				print(...args) {
+					const text = args.map((arg) => this.toString(arg)).join(" ");
+					this.output.push(text);
+					return text;
+				}
 
-            // Simuliere datetime
-            datetime() {
-                return {
-                    date: {
-                        today: () => new Date().toISOString().split('T')[0]
-                    }
-                };
-            }
+				toString(value) {
+					if (value === null || value === undefined) return "None";
+					if (typeof value === "string") return value;
+					if (Array.isArray(value))
+						return "[" + value.map((v) => this.toString(v)).join(", ") + "]";
+					return String(value);
+				}
 
-            // Simuliere math
-            math() {
-                return {
-                    pi: Math.PI,
-                    e: Math.E,
-                    sqrt: Math.sqrt,
-                    sin: Math.sin,
-                    cos: Math.cos,
-                    tan: Math.tan,
-                    floor: Math.floor,
-                    ceil: Math.ceil,
-                    abs: Math.abs
-                };
-            }
+				// Simuliere str() Funktion
+				str(value) {
+					return this.toString(value);
+				}
 
-            // Simuliere random
-            random() {
-                return {
-                    random: Math.random,
-                    randint: (min, max) => Math.floor(Math.random() * (max - min + 1)) + min,
-                    choice: (arr) => arr[Math.floor(Math.random() * arr.length)]
-                };
-            }
+				// Simuliere datetime
+				datetime() {
+					return {
+						date: {
+							today: () => new Date().toISOString().split("T")[0],
+						},
+					};
+				}
 
-            executeCode(code) {
-                this.output = [];
-                this.variables = {};
-                
-                try {
-                    // Zeile für Zeile verarbeiten
-                    const lines = code.split('\n');
-                    let jsCode = 'var simulator = this;\n'; // Simulator verfügbar machen
-                    
-                    for (let line of lines) {
-                        line = line.trim();
-                        
-                        // Skip leere Zeilen und Kommentare
-                        if (!line || line.startsWith('#')) {
-                            continue;
-                        }
-                        
-                        // Import statements
-                        if (line.startsWith('import datetime')) {
-                            jsCode += 'var datetime = simulator.datetime();\n';
-                            continue;
-                        }
-                        if (line.startsWith('import math')) {
-                            jsCode += 'var math = simulator.math();\n';
-                            continue;
-                        }
-                        if (line.startsWith('import random')) {
-                            jsCode += 'var random = simulator.random();\n';
-                            continue;
-                        }
-                        
-                        // Variable assignments - alle als var deklarieren
-                        const assignmentMatch = line.match(/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+)$/);
-                        if (assignmentMatch && !line.includes('print(')) {
-                            const varName = assignmentMatch[1];
-                            const value = assignmentMatch[2];
-                            line = `var ${varName} = ${value}`;
-                        }
-                        
-                        // Print statements - verschiedene Varianten
-                        if (line.includes('print(')) {
-                            line = line.replace(/print\((.*)\)/g, 'simulator.print($1)');
-                        }
-                        
-                        // F-strings - verbesserte Regex
-                        line = line.replace(/f["']([^"']*)\{([^}]+)\}([^"']*?)["']/g, (match, before, expr, after) => {
-                            return '`' + before + '${' + expr + '}' + after + '`';
-                        });
-                        
-                        // Python Operatoren
-                        line = line.replace(/\*\*/g, '**'); // Potenz bleibt erstmal
-                        line = line.replace(/(\w+)\s*\*\*\s*(\w+)/g, 'Math.pow($1, $2)');
-                        
-                        // Boolean Werte
-                        line = line.replace(/\bTrue\b/g, 'true');
-                        line = line.replace(/\bFalse\b/g, 'false');
-                        line = line.replace(/\bNone\b/g, 'null');
-                        
-                        // Range function
-                        line = line.replace(/range\((\d+)\)/g, '[...Array($1).keys()]');
-                        line = line.replace(/range\((\d+),\s*(\d+)\)/g, '[...Array($2-$1).keys()].map(i => i + $1)');
-                        
-                        // Len function
-                        line = line.replace(/len\(([^)]+)\)/g, '($1).length');
-                        
-                        // For loops - einfache Version
-                        if (line.includes('for ') && line.includes(' in ')) {
-                            const forMatch = line.match(/for\s+(\w+)\s+in\s+(.+):/);
-                            if (forMatch) {
-                                const variable = forMatch[1];
-                                const iterable = forMatch[2];
-                                jsCode += `for (var ${variable} of ${iterable}) {\n`;
-                                continue;
-                            }
-                        }
-                        
-                        // While loops
-                        if (line.includes('while ') && line.endsWith(':')) {
-                            line = line.replace(/while\s+(.+):/, 'while ($1) {');
-                        }
-                        
-                        // If statements
-                        if (line.includes('if ') && line.endsWith(':')) {
-                            line = line.replace(/if\s+(.+):/, 'if ($1) {');
-                        }
-                        
-                        // Elif zu else if
-                        if (line.includes('elif ') && line.endsWith(':')) {
-                            line = line.replace(/elif\s+(.+):/, '} else if ($1) {');
-                        }
-                        
-                        // Else
-                        if (line === 'else:') {
-                            line = '} else {';
-                        }
-                        
-                        // Funktionsdefinitionen - vereinfacht
-                        if (line.includes('def ') && line.endsWith(':')) {
-                            const defMatch = line.match(/def\s+(\w+)\s*\(([^)]*)\):/);
-                            if (defMatch) {
-                                const funcName = defMatch[1];
-                                const params = defMatch[2];
-                                jsCode += `function ${funcName}(${params}) {\n`;
-                                continue;
-                            }
-                        }
-                        
-                        // Return statements
-                        if (line.includes('return ')) {
-                            line = line.replace(/return\s+/, 'return ');
-                        }
-                        
-                        // Einrückung handhaben - einfach schließende Klammern hinzufügen
-                        if (line && !line.includes('{') && !line.includes('}')) {
-                            // Prüfen auf reduzierte Einrückung (Ende eines Blocks)
-                            // Für diese vereinfachte Version ignorieren wir das erstmal
-                        }
-                        
-                        jsCode += line + '\n';
-                    }
-                    
-                    // Fehlende schließende Klammern hinzufügen (vereinfacht)
-                    const openBraces = (jsCode.match(/\{/g) || []).length;
-                    const closeBraces = (jsCode.match(/\}/g) || []).length;
-                    for (let i = 0; i < openBraces - closeBraces; i++) {
-                        jsCode += '}\n';
-                    }
+				// Simuliere math
+				math() {
+					return {
+						pi: Math.PI,
+						e: Math.E,
+						sqrt: Math.sqrt,
+						sin: Math.sin,
+						cos: Math.cos,
+						tan: Math.tan,
+						floor: Math.floor,
+						ceil: Math.ceil,
+						abs: Math.abs,
+					};
+				}
 
-                    console.log('Generierter JS Code:', jsCode); // Debug
-                    
-                    // JavaScript mit call() ausführen, um den richtigen Kontext zu haben
-                    const func = new Function(jsCode);
-                    func.call(this);
-                    
-                    return { success: true, output: this.output.join('\n') };
-                } catch (error) {
-                    console.error('Ausführungsfehler:', error);
-                    return { success: false, output: `Fehler: ${error.message}\n\nTipp: Stellen Sie sicher, dass Ihr Python-Code korrekt formatiert ist.` };
-                }
-            }
-        }
+				// Simuliere random
+				random() {
+					return {
+						random: Math.random,
+						randint: (min, max) =>
+							Math.floor(Math.random() * (max - min + 1)) + min,
+						choice: (arr) => arr[Math.floor(Math.random() * arr.length)],
+					};
+				}
 
-        const simulator = new PythonSimulator();
+				executeCode(code) {
+					this.output = [];
+					this.variables = {};
 
-        function runCode() {
-            const code = document.getElementById('codeEditor').value;
-            const outputArea = document.getElementById('output');
-            const status = document.getElementById('status');
-            const runBtn = document.getElementById('runBtn');
+					try {
+						// Zeile für Zeile verarbeiten
+						const lines = code.split("\n");
+						let jsCode = "var simulator = this;\n"; // Simulator verfügbar machen
+						jsCode +=
+							"var str = function(value) { return simulator.str(value); };\n"; // str() Funktion verfügbar machen
 
-            if (!code.trim()) {
-                showStatus('Bitte geben Sie Code ein!', false);
-                return;
-            }
+						for (let line of lines) {
+							line = line.trim();
 
-            runBtn.disabled = true;
-            runBtn.textContent = '⏳ Läuft...';
+							// Skip leere Zeilen und Kommentare
+							if (!line || line.startsWith("#")) {
+								continue;
+							}
 
-            setTimeout(() => {
-                const result = simulator.executeCode(code);
-                
-                if (result.success) {
-                    outputArea.textContent = result.output || 'Code ausgeführt (keine Ausgabe)';
-                    showStatus('✅ Code erfolgreich ausgeführt!', true);
-                } else {
-                    outputArea.textContent = result.output;
-                    showStatus('❌ Fehler beim Ausführen des Codes', false);
-                }
+							// Import statements
+							if (line.startsWith("import datetime")) {
+								jsCode += "var datetime = simulator.datetime();\n";
+								continue;
+							}
+							if (line.startsWith("import math")) {
+								jsCode += "var math = simulator.math();\n";
+								continue;
+							}
+							if (line.startsWith("import random")) {
+								jsCode += "var random = simulator.random();\n";
+								continue;
+							}
 
-                runBtn.disabled = false;
-                runBtn.textContent = '▶ Ausführen';
-            }, 100);
-        }
+							// Variable assignments - alle als var deklarieren
+							const assignmentMatch = line.match(
+								/^([a-zA-Z_][a-zA-Z0-9_]*)\s*=\s*(.+)$/
+							);
+							if (assignmentMatch && !line.includes("print(")) {
+								const varName = assignmentMatch[1];
+								const value = assignmentMatch[2];
+								line = `var ${varName} = ${value}`;
+							}
 
-        function clearOutput() {
-            document.getElementById('output').textContent = 'Hier erscheint die Ausgabe Ihres Codes...';
-            hideStatus();
-        }
+							// Print statements - verschiedene Varianten
+							if (line.includes("print(")) {
+								line = line.replace(/print\((.*)\)/g, "simulator.print($1)");
+							}
 
-        function showStatus(message, isSuccess) {
-            const status = document.getElementById('status');
-            status.textContent = message;
-            status.className = `status ${isSuccess ? 'success' : 'error'}`;
-            status.style.display = 'block';
-            setTimeout(hideStatus, 3000);
-        }
+							// F-strings - verbesserte Regex
+							line = line.replace(
+								/f["']([^"']*)\{([^}]+)\}([^"']*?)["']/g,
+								(match, before, expr, after) => {
+									return "`" + before + "${" + expr + "}" + after + "`";
+								}
+							);
 
-        function hideStatus() {
-            document.getElementById('status').style.display = 'none';
-        }
+							// Python Operatoren
+							line = line.replace(/\*\*/g, "**"); // Potenz bleibt erstmal
+							line = line.replace(/(\w+)\s*\*\*\s*(\w+)/g, "Math.pow($1, $2)");
 
-        function loadExample(type) {
-            const examples = {
-                basic: `# Grundlagen
+							// Boolean Werte
+							line = line.replace(/\bTrue\b/g, "true");
+							line = line.replace(/\bFalse\b/g, "false");
+							line = line.replace(/\bNone\b/g, "null");
+
+							// Range function
+							line = line.replace(/range\((\d+)\)/g, "[...Array($1).keys()]");
+							line = line.replace(
+								/range\((\d+),\s*(\d+)\)/g,
+								"[...Array($2-$1).keys()].map(i => i + $1)"
+							);
+
+							// Len function
+							line = line.replace(/len\(([^)]+)\)/g, "($1).length");
+
+							// For loops - einfache Version
+							if (line.includes("for ") && line.includes(" in ")) {
+								const forMatch = line.match(/for\s+(\w+)\s+in\s+(.+):/);
+								if (forMatch) {
+									const variable = forMatch[1];
+									const iterable = forMatch[2];
+									jsCode += `for (var ${variable} of ${iterable}) {\n`;
+									continue;
+								}
+							}
+
+							// While loops
+							if (line.includes("while ") && line.endsWith(":")) {
+								line = line.replace(/while\s+(.+):/, "while ($1) {");
+							}
+
+							// If statements
+							if (line.includes("if ") && line.endsWith(":")) {
+								line = line.replace(/if\s+(.+):/, "if ($1) {");
+							}
+
+							// Elif zu else if
+							if (line.includes("elif ") && line.endsWith(":")) {
+								line = line.replace(/elif\s+(.+):/, "} else if ($1) {");
+							}
+
+							// Else
+							if (line === "else:") {
+								line = "} else {";
+							}
+
+							// Funktionsdefinitionen - vereinfacht
+							if (line.includes("def ") && line.endsWith(":")) {
+								const defMatch = line.match(/def\s+(\w+)\s*\(([^)]*)\):/);
+								if (defMatch) {
+									const funcName = defMatch[1];
+									const params = defMatch[2];
+									jsCode += `function ${funcName}(${params}) {\n`;
+									continue;
+								}
+							}
+
+							// Return statements
+							if (line.includes("return ")) {
+								line = line.replace(/return\s+/, "return ");
+							}
+
+							// Einrückung handhaben - einfach schließende Klammern hinzufügen
+							if (line && !line.includes("{") && !line.includes("}")) {
+								// Prüfen auf reduzierte Einrückung (Ende eines Blocks)
+								// Für diese vereinfachte Version ignorieren wir das erstmal
+							}
+
+							jsCode += line + "\n";
+						}
+
+						// Fehlende schließende Klammern hinzufügen (vereinfacht)
+						const openBraces = (jsCode.match(/\{/g) || []).length;
+						const closeBraces = (jsCode.match(/\}/g) || []).length;
+						for (let i = 0; i < openBraces - closeBraces; i++) {
+							jsCode += "}\n";
+						}
+
+						console.log("Generierter JS Code:", jsCode); // Debug
+
+						// JavaScript mit call() ausführen, um den richtigen Kontext zu haben
+						const func = new Function(jsCode);
+						func.call(this);
+
+						return { success: true, output: this.output.join("\n") };
+					} catch (error) {
+						console.error("Ausführungsfehler:", error);
+						return {
+							success: false,
+							output: `Fehler: ${error.message}\n\nTipp: Stellen Sie sicher, dass Ihr Python-Code korrekt formatiert ist.`,
+						};
+					}
+				}
+			}
+
+			const simulator = new PythonSimulator();
+
+			function runCode() {
+				const code = document.getElementById("codeEditor").value;
+				const outputArea = document.getElementById("output");
+				const status = document.getElementById("status");
+				const runBtn = document.getElementById("runBtn");
+
+				if (!code.trim()) {
+					showStatus("Bitte geben Sie Code ein!", false);
+					return;
+				}
+
+				runBtn.disabled = true;
+				runBtn.textContent = "⏳ Läuft...";
+
+				setTimeout(() => {
+					const result = simulator.executeCode(code);
+
+					if (result.success) {
+						outputArea.textContent =
+							result.output || "Code ausgeführt (keine Ausgabe)";
+						showStatus("✅ Code erfolgreich ausgeführt!", true);
+					} else {
+						outputArea.textContent = result.output;
+						showStatus("❌ Fehler beim Ausführen des Codes", false);
+					}
+
+					runBtn.disabled = false;
+					runBtn.textContent = "▶ Ausführen";
+				}, 100);
+			}
+
+			function clearOutput() {
+				document.getElementById("output").textContent =
+					"Hier erscheint die Ausgabe Ihres Codes...";
+				hideStatus();
+			}
+
+			function showStatus(message, isSuccess) {
+				const status = document.getElementById("status");
+				status.textContent = message;
+				status.className = `status ${isSuccess ? "success" : "error"}`;
+				status.style.display = "block";
+				setTimeout(hideStatus, 3000);
+			}
+
+			function hideStatus() {
+				document.getElementById("status").style.display = "none";
+			}
+
+			function loadExample(type) {
+				const examples = {
+					basic: `# Grundlagen
 print("Hallo Welt!")
 name = "Python"
 alter = 30
@@ -505,7 +545,7 @@ print("Zahlen:")
 print(zahlen)
 print("Erstes Element: " + str(zahlen[0]))`,
 
-                math: `# Mathematik
+					math: `# Mathematik
 import math
 print("Mathematische Berechnungen:")
 print("Pi = " + str(math.pi))
@@ -520,7 +560,7 @@ print(str(a) + " - " + str(b) + " = " + str(a - b))
 print(str(a) + " * " + str(b) + " = " + str(a * b))
 print(str(a) + " / " + str(b) + " = " + str(a / b))`,
 
-                loops: `# Schleifen
+					loops: `# Schleifen
 print("For-Schleife:")
 for i in range(5):
     print("Iteration " + str(i))
@@ -538,7 +578,7 @@ print("Zähler: " + str(zähler))
 zähler = zähler + 1
 print("Zähler: " + str(zähler))`,
 
-                functions: `# Einfache Berechnungen
+					functions: `# Einfache Berechnungen
 def addiere(a, b):
     return a + b
 
@@ -555,33 +595,39 @@ print("4 * 6 = " + str(ergebnis2))
 # Aktuelles Datum
 import datetime
 heute = datetime.date.today()
-print("Heute ist: " + heute)`
-            };
+print("Heute ist: " + heute)`,
+				};
 
-            document.getElementById('codeEditor').value = examples[type] || examples.basic;
-        }
+				document.getElementById("codeEditor").value =
+					examples[type] || examples.basic;
+			}
 
-        // Tastatur-Shortcuts
-        document.getElementById('codeEditor').addEventListener('keydown', function(e) {
-            if (e.ctrlKey && e.key === 'Enter') {
-                runCode();
-                e.preventDefault();
-            }
-            
-            // Tab-Einrückung
-            if (e.key === 'Tab') {
-                e.preventDefault();
-                const start = this.selectionStart;
-                const end = this.selectionEnd;
-                this.value = this.value.substring(0, start) + '    ' + this.value.substring(end);
-                this.selectionStart = this.selectionEnd = start + 4;
-            }
-        });
+			// Tastatur-Shortcuts
+			document
+				.getElementById("codeEditor")
+				.addEventListener("keydown", function (e) {
+					if (e.ctrlKey && e.key === "Enter") {
+						runCode();
+						e.preventDefault();
+					}
 
-        // Beispiel beim Laden
-        window.addEventListener('load', function() {
-            loadExample('basic');
-        });
-    </script>
-</body>
+					// Tab-Einrückung
+					if (e.key === "Tab") {
+						e.preventDefault();
+						const start = this.selectionStart;
+						const end = this.selectionEnd;
+						this.value =
+							this.value.substring(0, start) +
+							"    " +
+							this.value.substring(end);
+						this.selectionStart = this.selectionEnd = start + 4;
+					}
+				});
+
+			// Beispiel beim Laden
+			window.addEventListener("load", function () {
+				loadExample("basic");
+			});
+		</script>
+	</body>
 </html>
